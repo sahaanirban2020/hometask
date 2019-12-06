@@ -1,0 +1,108 @@
+{
+ "application": "testapp",
+ "expectedArtifacts": [
+  {
+   "defaultArtifact": {
+    "artifactAccount": "no-auth-http-account",
+    "id": "7160a693-bdae-49ea-abe3-c4517524b80d",
+    "reference": "https://sahaanirban2020.github.io/helm-charts/testapp-0.1.0.tgz",
+    "type": "http/file"
+   },
+   "displayName": "testapp-chart",
+   "id": "31f18f31-9c52-41c6-8be5-583fb1a47465",
+   "matchArtifact": {
+    "artifactAccount": "no-auth-http-account",
+    "id": "f1a322fa-365f-4713-a304-201a66ce284d",
+    "reference": "https://sahaanirban2020.github.io/helm-charts/testapp-0.1.0.tgz",
+    "type": "http/file"
+   },
+   "useDefaultArtifact": true,
+   "usePriorArtifact": false
+  }
+ ],
+ "id": "384ec7f6-60ba-4686-9af0-d9e6547ffa06",
+ "index": 0,
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "website",
+ "parameterConfig": [
+  {
+   "default": "",
+   "description": "",
+   "hasOptions": false,
+   "label": "",
+   "name": "image_tag",
+   "options": [
+    {
+     "value": ""
+    }
+   ],
+   "pinned": false,
+   "required": true
+  }
+ ],
+ "stages": [
+  {
+   "expectedArtifacts": [
+    {
+     "defaultArtifact": {
+      "customKind": true,
+      "id": "a248e27b-8e1c-446a-89f8-7eff712a8dcc"
+     },
+     "displayName": "testapp-deploy",
+     "id": "85c27aaf-083d-45a9-86d1-83714d9975da",
+     "matchArtifact": {
+      "id": "a5b7492c-8891-4279-b893-c20981350b3a",
+      "name": "testapp-deploy",
+      "type": "embedded/base64"
+     },
+     "useDefaultArtifact": false,
+     "usePriorArtifact": false
+    }
+   ],
+   "inputArtifacts": [
+    {
+     "account": "no-auth-http-account",
+     "id": "31f18f31-9c52-41c6-8be5-583fb1a47465"
+    }
+   ],
+   "name": "Bake (Manifest)",
+   "namespace": "testapp-prod",
+   "outputName": "testapp",
+   "overrides": {
+    "image_tag": "${trigger[\"parameters\"][\"image_tag\"]}"
+   },
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "templateRenderer": "HELM2",
+   "type": "bakeManifest"
+  },
+  {
+   "account": "default",
+   "cloudProvider": "kubernetes",
+   "manifestArtifactAccount": "embedded-artifact",
+   "manifestArtifactId": "85c27aaf-083d-45a9-86d1-83714d9975da",
+   "moniker": {
+    "app": "testapp"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "2",
+   "requisiteStageRefIds": [
+    "1"
+   ],
+   "skipExpressionEvaluation": false,
+   "source": "artifact",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [],
+ "updateTs": "1575651606000"
+}
