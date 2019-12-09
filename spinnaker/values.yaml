@@ -195,7 +195,7 @@ ingress:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-0752065aa2b4d87de,subnet-080dfb415f56b7b64,subnet-09e0a4df892a106cd
+    alb.ingress.kubernetes.io/subnets: PUBLIC_SUBNET_LIST
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
   # tls:
   #  - secretName: -tls
@@ -212,7 +212,7 @@ ingressGate:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-0752065aa2b4d87de,subnet-080dfb415f56b7b64,subnet-09e0a4df892a106cd
+    alb.ingress.kubernetes.io/subnets: PUBLIC_SUBNET_LIST
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":8084}]'
     alb.ingress.kubernetes.io/healthcheck-path: /health
   # tls:
@@ -280,12 +280,12 @@ gcs:
 # AWS Simple Storage Service
 s3:
   enabled: true
-  bucket: "asaha-hometask-spinnaker"
+  bucket: "SPINNAKER_BUCKET_NAME"
   # rootFolder: "front50"
   region: "eu-west-1"
   # endpoint: ""
-  accessKey: ""
-  secretKey: ""
+  accessKey: "AWS_ACCESS_KEY"
+  secretKey: "AWS_SECRET_KEY"
   # assumeRole: "<role to assume>"
 
 # Azure Storage Account

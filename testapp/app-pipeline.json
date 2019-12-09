@@ -1,5 +1,5 @@
 {
- "application": "testapp",
+ "application": "testapp-prod",
  "expectedArtifacts": [
   {
    "defaultArtifact": {

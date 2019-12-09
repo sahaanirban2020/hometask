@@ -30,3 +30,7 @@ output "alb_ing_rbac" {
 output "tiller_svc_acct" {
   value = local.tiller_svc_acct
 }
+
+output "spinnaker-bucket" {
+  value = aws_s3_bucket.spinnaker-bucket.id
+}"
