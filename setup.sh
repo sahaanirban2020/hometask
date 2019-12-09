@@ -15,7 +15,7 @@ chmod +x /usr/bin/kubectl /usr/bin/aws-iam-authenticator
 
 # Install Python 3.6 and awscli
 yum -y install python36 python36-pip python36-libs python36-devel
-pip-3.6 install argparse boto3 awscli
+pip-3.6 install awscli
 
 # Install Terraform
 curl -o terraform_0.12.17_linux_amd64.zip https://releases.hashicorp.com/terraform/0.12.17/terraform_0.12.17_linux_amd64.zip
